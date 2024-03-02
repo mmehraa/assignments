@@ -14,7 +14,15 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  let answer = new Array();
+  for(let i = 0; i < transactions.length; i++){
+    let k = 3 
+    for (let j = 0; j < 2; j++){
+      answer[i][j] = transactions[i][k];
+      k--;
+    }
+  }
+  return answer;
 }
 
 module.exports = calculateTotalSpentByCategory;
