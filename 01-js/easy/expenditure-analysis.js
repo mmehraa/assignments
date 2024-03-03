@@ -14,15 +14,22 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  let answer = new Array();
-  for(let i = 0; i < transactions.length; i++){
-    let k = 3 
-    for (let j = 0; j < 2; j++){
-      answer[i][j] = transactions[i][k];
-      k--;
+  console.log(transactions);
+  const totals = {};
+  transactions.forEach((transaction) => {
+    const { category, price } = transaction;
+    if (!totals[category]) {
+      totals[category] = price;
+    } else {
+      totals[category] += price;
     }
-  }
-  return answer;
+  });
+
+  const result = [];
+  Object.keys(totals).forEach((category) => {
+    result.push({ category: category, totalSpent: totals[category] });
+  });
+  return result;
 }
 
 module.exports = calculateTotalSpentByCategory;
